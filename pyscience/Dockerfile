@@ -28,6 +28,7 @@ RUN pip install \
         ipython \
         pyzmq \
         xlrd
+RUN pip install Pillow
 
 
 
