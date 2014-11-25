@@ -22,6 +22,8 @@ RUN dpkg -i cuda.deb && rm cuda.deb
 RUN apt-get update 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install cuda && apt-get clean &&  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN apt-get update && apt-get -y install python-opencv
+RUN pip install numpy cython scipy scikit-image scikit-learn matplotlib ipython h5py leveldb networkx nose pandas python-dateutil protobuf python-gflags
 
 
 
