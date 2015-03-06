@@ -17,10 +17,10 @@ RUN apt-get update && \
 
 # install cuda
 WORKDIR /tmp
-RUN wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_6.5-14_amd64.deb -O cuda.deb
-RUN dpkg -i cuda.deb && rm cuda.deb
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install cuda && apt-get clean &&  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN sudo wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_6.5-14_amd64.deb -O cuda.deb
+RUN sudo dpkg -i cuda.deb && rm cuda.deb
+RUN sudo apt-get update
+RUN sudo DEBIAN_FRONTEND=noninteractive apt-get -y install cuda && apt-get clean &&  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN apt-get update && apt-get -y install python-opencv
 RUN pip install --upgrade networkx
