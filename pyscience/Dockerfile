@@ -29,6 +29,7 @@ RUN pip install \
         pyzmq \
         xlrd
 RUN pip install Pillow
+RUN pip install theano
 
 
 
