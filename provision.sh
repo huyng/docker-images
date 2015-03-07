@@ -1,3 +1,5 @@
+# curl https://raw.githubusercontent.com/huyng/docker-images/master/provision.sh | sudo sh
+
 export DEBIAN_FRONTEND=noninteractive 
 
 apt-get -y update
