@@ -1,5 +1,12 @@
 FROM ubuntu:14.04
 
+# install cuda
+WORKDIR /tmp
+RUN sudo wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb -O cuda.deb
+RUN sudo dpkg -i cuda.deb && rm cuda.deb
+RUN sudo apt-get update
+RUN sudo DEBIAN_FRONTEND=noninteractive apt-get -y install cuda 
+
 RUN apt-get update && \
     apt-get -y install \
         build-essential \
@@ -32,15 +39,6 @@ RUN apt-get update && \
         liblmdb-dev \
         protobuf-compiler \
         python-opencv
-
-
-
-# install cuda
-WORKDIR /tmp
-RUN sudo wget http://developer.download.nvidia.com/compute/cuda/7_0/Prod/local_installers/rpmdeb/cuda-repo-ubuntu1404-7-0-local_7.0-28_amd64.deb -O cuda.deb
-RUN sudo dpkg -i cuda.deb && rm cuda.deb
-# RUN sudo apt-get update
-# RUN sudo DEBIAN_FRONTEND=noninteractive apt-get -y install cuda 
 
 RUN pip install -U pip wheel
 RUN pip install Flask && \
