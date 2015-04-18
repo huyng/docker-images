@@ -1,12 +1,21 @@
 FROM ubuntu:14.04
 
-# install cuda
 WORKDIR /tmp
+
+# install cuda
 RUN apt-get install -y wget
-RUN sudo wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb -O cuda.deb
-RUN sudo dpkg -i cuda.deb && rm cuda.deb
-RUN sudo apt-get update
-RUN sudo DEBIAN_FRONTEND=noninteractive apt-get -y install cuda 
+RUN wget http://developer.download.nvidia.com/compute/cuda/7_0/Prod/local_installers/cuda_7.0.28_linux.run -O cuda.run && \
+    chmod +x cuda.run && \
+    mkdir cuda_installers && \
+    ./cuda.run -extract=`pwd`/cuda_installers && \
+    cd cuda_installers && \
+    ./NVIDIA-Linux-x86_64-*.run -s -N --no-kernel-module && \
+    ./cuda-linux64-rel-*.run -noprompt
+
+# RUN sudo wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb -O cuda.deb
+# RUN sudo dpkg -i cuda.deb && rm cuda.deb
+# RUN sudo apt-get update
+# RUN sudo DEBIAN_FRONTEND=noninteractive apt-get -y install cuda 
 
 RUN apt-get update && \
     apt-get -y install \
