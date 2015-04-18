@@ -13,7 +13,7 @@ apt-get update
 apt-get -y install cuda && apt-get clean &&  rm -rf /var/lib/apt/lists/
 
 sudo yum --enablerepo=epel install -y bash-completion
-sudo pip-2.7 install numpy scipy theano ipython
+sudo pip-2.7 install numpy scipy theano ipython matplotlib flask
 sudo yum install -y git
 sudo yum install -y python27
 sudo yum install -y python27-devel
@@ -23,6 +23,7 @@ sudo yum install -y atlas-devel
 sudo yum install -y gcc-gfortran
 sudo yum install -y htop
 sudo yum install -y docker-io
+sudo yum install -y libpng-devel libjpeg-devel freetype-devel
 sudo gpasswd -a ${USER} docker
 sudo service docker start
 
