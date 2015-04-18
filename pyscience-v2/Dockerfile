@@ -2,6 +2,7 @@ FROM ubuntu:14.04
 
 # install cuda
 WORKDIR /tmp
+RUN apt-get install -y wget
 RUN sudo wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb -O cuda.deb
 RUN sudo dpkg -i cuda.deb && rm cuda.deb
 RUN sudo apt-get update
