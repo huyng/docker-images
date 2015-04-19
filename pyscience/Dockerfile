@@ -3,7 +3,7 @@
 # 
 # To leverage the gpu, run docker like so:
 # 
-#   docker run -it --device /dev/nvidiactl:/dev/nvidiactl  --device /dev/nvidia0:/dev/nvidia0 huyng/pyscience
+#   docker run -it --device /dev/nvidiactl:/dev/nvidiactl --device /dev/nvidia0:/dev/nvidia0 --device /dev/nvidia-uvm:/dev/nvidia-uvm huyng/pyscience
 #
 
 
