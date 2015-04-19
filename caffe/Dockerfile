@@ -1,7 +1,7 @@
 FROM huyng/pyscience
 
 
-RUN cd /usr/local && \
+RUN cd /opt && \
     git clone https://github.com/BVLC/caffe.git && \
     cd caffe && \
     git checkout c6414ea7cab5917c904729c87f786e0a5909475c && \
@@ -10,6 +10,6 @@ RUN cd /usr/local && \
     make all -j && \
     make test -j
 
-ENV PATH ${PATH}:/usr/local/caffe/build/tools
+ENV PATH ${PATH}:/opt/caffe/build/tools
 
 
