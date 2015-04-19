@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 
 WORKDIR /tmp
 
-# install cuda
+# Install cuda
 RUN apt-get install -y wget
 RUN wget http://developer.download.nvidia.com/compute/cuda/7_0/Prod/local_installers/cuda_7.0.28_linux.run -O cuda.run && \
     chmod +x cuda.run && \
@@ -10,12 +10,12 @@ RUN wget http://developer.download.nvidia.com/compute/cuda/7_0/Prod/local_instal
     ./cuda.run -extract=`pwd`/cuda_installers && \
     cd cuda_installers && \
     ./NVIDIA-Linux-x86_64-*.run -s -N --no-kernel-module && \
-    ./cuda-linux64-rel-*.run -noprompt
+    ./cuda-linux64-rel-*.run -noprompt && \
+    cd .. && \
+    rm -rf cuda_installers cuda.run
+ENV PATH /usr/local/cuda/bin:${PATH}
+RUN echo "/usr/local/cuda/lib64" > /etc/ld.so.conf.d/x86_64-linux-cuda.conf && ldconfig
 
-# RUN sudo wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb -O cuda.deb
-# RUN sudo dpkg -i cuda.deb && rm cuda.deb
-# RUN sudo apt-get update
-# RUN sudo DEBIAN_FRONTEND=noninteractive apt-get -y install cuda 
 
 RUN apt-get update && \
     apt-get -y install \
@@ -73,5 +73,6 @@ RUN pip install Flask && \
     pip install protobuf && \
     pip install python-gflags
 
+WORKDIR /root
 
 
