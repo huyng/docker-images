@@ -2,7 +2,7 @@ FROM huyng/pyscience
 
 
 RUN cd /usr/local && \
-    git clone git@github.com:BVLC/caffe.git && \
+    git clone https://github.com/BVLC/caffe.git && \
     cd caffe && \
     git checkout c6414ea7cab5917c904729c87f786e0a5909475c && \
     mv Makefile.config.example Makefile.config && \
