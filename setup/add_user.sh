@@ -1,3 +1,6 @@
+#!/bin/sh
+
+# curl https://raw.githubusercontent.com/huyng/docker-images/master/setup/add_user.sh | sudo sh
 
 adduser huyng
 usermod -aG sudo huyng
