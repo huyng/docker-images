@@ -1,6 +1,6 @@
 # curl https://raw.githubusercontent.com/huyng/docker-images/master/provision.sh | sudo sh
 
-export DEBIAN_FRONTEND=noninteractive 
+export DEBIAN_FRONTEND=noninteractive
 
 apt-get -y update
 apt-get install -y git docker.io
@@ -13,7 +13,6 @@ apt-get update
 apt-get -y install cuda && apt-get clean &&  rm -rf /var/lib/apt/lists/
 
 sudo yum --enablerepo=epel install -y bash-completion
-sudo pip-2.7 install numpy scipy theano ipython matplotlib flask
 sudo yum install -y git
 sudo yum install -y python27
 sudo yum install -y python27-devel
@@ -27,6 +26,8 @@ sudo yum install -y libpng-devel libjpeg-devel freetype-devel
 sudo gpasswd -a ${USER} docker
 sudo service docker start
 
+sudo pip-2.7 install numpy scipy theano ipython matplotlib flask jupyter
 
+echo "%sudo   ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
-sudo PATH=$PATH:/opt/nvidia/cuda/bin THEANO_FLAGS=mode=FAST_RUN,device=gpu0,floatX=float32 python27 gputest.py
+groupadd sudo
